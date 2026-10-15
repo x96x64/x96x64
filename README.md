@@ -43,10 +43,8 @@ npm install -g ilyrics
 #### pip
 
 ```bash
-pipx install ilyrics
+pipx install ilyrics    # or: pip install ilyrics
 ```
-
-Without pipx, `pip install ilyrics` installs it as well.
 
 ## How I Work
 
