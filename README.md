@@ -10,7 +10,7 @@ I am a student and independent developer in Japan. I build quiet tools: software
 
 ## What I Believe
 
-Technology should be a means to a better experience, not a feature to be noticed. I am inspired by Apple's approach to Apple Intelligence and Siri, where intelligence quietly improves what you are already doing instead of asking you to change how you work. The best tools are the ones you hardly notice using, until you realize that your work has quietly become better.
+Technology should be a means to a better experience, not a feature to be noticed. I am inspired by Apple's approach to Apple Intelligence and Siri AI, where intelligence quietly improves what you are already doing instead of asking you to change how you work. The best tools are the ones you hardly notice using, until you realize that your work has quietly become better.
 
 In practice, this means that I care about the moments around the main task as much as the task itself. A command should check its inputs before it spends minutes on them, explain a problem in plain language when something goes wrong, leave nothing half-finished behind when it is interrupted, and produce the same result every time it is given the same input. None of these details is visible when everything works, and that is the point.
 
@@ -54,7 +54,7 @@ I develop together with AI coding agents. Codex and Claude take part in planning
 
 ## Interests
 
-My interests are AI agents and bots, command-line tools, free and open-source software, and audio and music files. Away from the keyboard, I listen to a lot of music from the 1960s through the 1990s, above all Michael Jackson and The Beatles. My favorite Michael Jackson album is *HIStory: Past, Present and Future, Book I*, and my favorite of his songs is its title track, "HIStory." My favorite Beatles album is *The Beatles*, better known as the White Album, and my favorite of their songs is "Yellow Submarine," from *Yellow Submarine*.
+My interests are AI agents and bots, command-line tools, free and open-source software, and audio and music files. Away from the keyboard, I listen to a lot of music from the 1960s through the 1990s, above all Michael Jackson and The Beatles. My favorite Michael Jackson album is *HIStory: Past, Present and Future, Book I*, and my favorite of his songs is its title track, "HIStory." My favorite Beatles album is *The Beatles*, better known as The White Album, and my favorite of their songs is "Yellow Submarine," from *Yellow Submarine*.
 
 ## GitHub Stats
 
