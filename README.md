@@ -1,4 +1,10 @@
-# hello
+<h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/hello/hello-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/hello/hello-light.svg">
+    <img src="assets/hello/hello-light.svg" alt="hello" width="96">
+  </picture>
+</h1>
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-x96x64-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/x96x64)
 [![Swift](https://img.shields.io/badge/Swift-6-F05138?logo=swift&logoColor=white)](https://www.swift.org)
@@ -73,16 +79,41 @@ My latest public activity on GitHub, updated automatically every six hours:
 
 ### GitHub Stats
 
-These cards are generated from my public GitHub activity and update on their own.
+These cards are generated from my public GitHub activity and refreshed automatically every six hours. The displayed figures may lag behind recent activity because the source services cache their results; if a refresh fails, the last successful cards remain available.
 
-[![Re:COO's GitHub stats](https://github-readme-stats.vercel.app/api?username=x96x64&show_icons=true&hide_border=true&include_all_commits=true)](https://github.com/x96x64)
-[![Top languages](https://github-readme-stats.vercel.app/api/top-langs/?username=x96x64&layout=compact&hide_border=true)](https://github.com/x96x64)
+<a href="https://github.com/x96x64">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/github/stats-dark.svg">
+    <img alt="Re:COO's GitHub stats" src="assets/github/stats-light.svg">
+  </picture>
+</a>
+<a href="https://github.com/x96x64">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/github/languages-dark.svg">
+    <img alt="Top languages" src="assets/github/languages-light.svg">
+  </picture>
+</a>
 
-[![GitHub streak](https://streak-stats.demolab.com?user=x96x64&hide_border=true)](https://github.com/x96x64)
+<a href="https://github.com/x96x64">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/github/streak-dark.svg">
+    <img alt="GitHub streak" src="assets/github/streak-light.svg">
+  </picture>
+</a>
 
-[![Trophies](https://github-trophies.vercel.app/?username=x96x64&theme=flat&no-frame=true&no-bg=true&margin-w=8&column=-1)](https://github.com/x96x64)
+<a href="https://github.com/x96x64">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/github/trophies-dark.svg">
+    <img alt="Trophies" src="assets/github/trophies-light.svg">
+  </picture>
+</a>
 
-[![iLyrics repository card](https://github-readme-stats.vercel.app/api/pin/?username=x96x64&repo=ilyrics&show_owner=true&hide_border=true)](https://github.com/x96x64/ilyrics)
+<a href="https://github.com/x96x64/ilyrics">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/github/ilyrics-dark.svg">
+    <img alt="iLyrics repository card" src="assets/github/ilyrics-light.svg">
+  </picture>
+</a>
 
 ### Contributions
 

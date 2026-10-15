@@ -1,0 +1,17 @@
+The greeting is outlined from Macintosh Skeletal Filled by npwitk.
+Source: https://github.com/npwitk/Macintosh-Skeletal-Filled
+Revision: 07192af3f086c0f6a616800f7d43d012656c213b
+Font: fonts/MacintoshSkeletalFilled.otf
+Font SHA-256: 299edec5092a978765763068f530f791053d52cc0edb78f65c7bff8f3aefdd71
+License: https://github.com/npwitk/Macintosh-Skeletal-Filled/blob/07192af3f086c0f6a616800f7d43d012656c213b/LICENSE
+
+The upstream project describes these fonts as derivatives of Apple's font
+data, shared for personal, non-commercial, educational use only. It does
+not grant a license to Apple's intellectual property. Outlining the
+greeting does not remove these conditions or resolve underlying rights.
+The font file is not included or embedded. These greeting assets are not
+offered under an open-source font license. This profile is not affiliated
+with, sponsored by, or endorsed by Apple Inc.
+
+Regenerate on macOS with Core Text, which applies contextual alternates:
+swift scripts/render-hello.swift /path/to/MacintoshSkeletalFilled.otf assets/hello

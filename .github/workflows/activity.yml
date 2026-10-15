@@ -1,4 +1,4 @@
-name: Recent Activity
+name: Recent Activity and Cards
 
 on:
   schedule:
@@ -8,12 +8,18 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: profile-activity-and-cards
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Write recent public activity into the README
         uses: jamesgeorge007/github-activity-readme@master
         env:
@@ -21,3 +27,16 @@ jobs:
         with:
           COMMIT_MSG: "docs: update recent activity"
           MAX_LINES: 5
+      - name: Refresh the public cards with system UI fonts
+        run: python3 scripts/update-github-cards.py
+      - name: Publish refreshed cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/github/*.svg
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "docs: refresh GitHub activity cards"
+          git pull --rebase origin main
+          git push origin HEAD:main

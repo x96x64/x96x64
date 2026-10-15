@@ -1,0 +1,24 @@
+These SVG cards are generated from the existing public services used by
+this profile. The local adaptation applies the viewer's system UI font
+to SVG text, preserving the providers' metrics, labels, and artwork.
+
+Stats, languages, and repository cards:
+https://github.com/anuraghazra/github-readme-stats
+https://github-readme-stats.vercel.app/
+
+Contribution streak:
+https://github.com/DenverCoder1/github-readme-streak-stats
+https://streak-stats.demolab.com/
+
+Trophies:
+https://github.com/lucthienphong1120/github-trophies
+https://github-trophies.vercel.app/
+
+Upstream project licenses are preserved in licenses/. The adaptation is
+implemented in scripts/update-github-cards.py. The trophy layout uses six
+columns because this provider returns negative dimensions for column=-1.
+
+Refresh: python3 scripts/update-github-cards.py
+The Recent Activity and Cards workflow runs every six hours. Provider
+caching can delay new data. Failed downloads or invalid cards do not
+replace the existing set. No SF Pro font file is embedded or distributed.
