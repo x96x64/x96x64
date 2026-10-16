@@ -70,11 +70,11 @@ You can find my work here on GitHub and my background on [LinkedIn](https://www.
 My latest public activity on GitHub, updated automatically every six hours:
 
 <!--START_SECTION:activity-->
-1. 🚀 Published release [iLyrics: v1.3.2, Lyrics Videos of the iPhone Music Lyrics Screen for macOS](https://github.com/x96x64/ilyrics/releases/tag/v1.3.2) in [x96x64/ilyrics](https://github.com/x96x64/ilyrics)
-2. 💪 Opened PR [#6](https://github.com/x96x64/ilyrics/pull/6) in [x96x64/ilyrics](https://github.com/x96x64/ilyrics)
-3. 🚀 Published release [iLyrics: v1.3.1, Lyrics Videos of the iPhone Music Lyrics Screen for macOS](https://github.com/x96x64/ilyrics/releases/tag/v1.3.1) in [x96x64/ilyrics](https://github.com/x96x64/ilyrics)
-4. 🎉 Merged PR [#5](https://github.com/x96x64/ilyrics/pull/5) in [x96x64/ilyrics](https://github.com/x96x64/ilyrics)
-5. 💪 Opened PR [#5](https://github.com/x96x64/ilyrics/pull/5) in [x96x64/ilyrics](https://github.com/x96x64/ilyrics)
+1. 🎉 Merged PR [#6](https://github.com/x96x64/ilyrics/pull/6) in [x96x64/ilyrics](https://github.com/x96x64/ilyrics)
+2. 🚀 Published release [iLyrics: v1.3.2, Lyrics Videos of the iPhone Music Lyrics Screen for macOS](https://github.com/x96x64/ilyrics/releases/tag/v1.3.2) in [x96x64/ilyrics](https://github.com/x96x64/ilyrics)
+3. 💪 Opened PR [#6](https://github.com/x96x64/ilyrics/pull/6) in [x96x64/ilyrics](https://github.com/x96x64/ilyrics)
+4. 🚀 Published release [iLyrics: v1.3.1, Lyrics Videos of the iPhone Music Lyrics Screen for macOS](https://github.com/x96x64/ilyrics/releases/tag/v1.3.1) in [x96x64/ilyrics](https://github.com/x96x64/ilyrics)
+5. 🎉 Merged PR [#5](https://github.com/x96x64/ilyrics/pull/5) in [x96x64/ilyrics](https://github.com/x96x64/ilyrics)
 <!--END_SECTION:activity-->
 
 ### GitHub Stats
