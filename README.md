@@ -9,7 +9,6 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-x96x64-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/x96x64)
 [![Swift](https://img.shields.io/badge/Swift-6-F05138?logo=swift&logoColor=white)](https://www.swift.org)
 [![macOS](https://img.shields.io/badge/macOS-14%2B-000000?logo=apple&logoColor=white)](https://www.apple.com/macos/)
-[![Core ML](https://img.shields.io/badge/Core%20ML-on--device-34C759?logo=apple&logoColor=white)](https://developer.apple.com/documentation/coreml)
 [![Codex: Agent](https://img.shields.io/badge/Codex-Agent-374151)](#how-i-work)
 [![Claude: Agent](https://img.shields.io/badge/Claude-Agent-D97757)](#how-i-work)
 [![CLI: Tools](https://img.shields.io/badge/CLI-Tools-334155)](#what-i-believe)
