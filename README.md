@@ -86,6 +86,8 @@ You can find my work here on GitHub and my background on [LinkedIn](https://www.
 
 ## GitHub Activity
 
+The activity list, the statistics cards, and the contribution snake below are generated from my public GitHub data by two scheduled workflows in this repository. One rewrites the activity list and refreshes the cards every six hours; the other redraws the snake every day and after each push to the main branch, and publishes it to a separate branch. These three parts are never edited by hand, so they show the public record as of their last successful refresh.
+
 ### Recent Activity
 
 The list below shows my latest public activity on GitHub. A scheduled workflow rewrites it automatically every six hours, so it reflects my recent public events, most recent first, and it may lag behind what GitHub itself shows:
