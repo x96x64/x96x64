@@ -2,7 +2,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/hello/hello-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/hello/hello-light.svg">
-    <img src="assets/hello/hello-light.svg" alt="hello" width="96">
+    <img src="assets/hello/hello-light.svg" alt="Hello" width="96">
   </picture>
 </h1>
 
@@ -26,11 +26,13 @@ In practice, this means that I care about the moments around the main task as mu
 
 ## How I Work
 
-I develop together with AI coding agents. Codex and Claude take part in planning, implementation, review, and documentation, and their contributions are credited in the commit history. I decide what to build, set the constraints, and review every change before it ships; the agents make it possible for one person to keep the standards of a team, from atomic commits and continuous integration to written reports that record every measurement and every decision.
+I develop together with AI coding agents. Codex and Claude take part in planning, implementation, review, and documentation, and their contributions are credited in the commit log. I decide what to build, set the constraints, and review every change before it ships.
+
+The agents make it possible for one person to keep the standards of a team: small commits that follow Conventional Commits, continuous integration on every pull request, a regression test with every safety fix, and documentation that is corrected whenever the behavior it describes changes. Both projects state their engineering constraints in the repository, so that a human contributor and an agent are held to the same rules.
 
 ## What I Am Building
 
-I am currently building two command-line tools for macOS, iLyrics and iLibrary. Both are written in Swift and published as free and open-source software under the Apache License, Version 2.0. Both run entirely on the Mac, and both are designed to state what they will do before they do it.
+I am currently building two command-line tools for macOS, iLyrics and iLibrary. Both are written in Swift and published as free and open-source software under the Apache License, Version 2.0. Both run on the Mac without any network service, apart from the one-time download of the alignment models that iLyrics needs, and both are designed to state what they will do before they do it. The two projects share conventions: commands with verbs as subcommands, a dry run before every change, and honest statements of what has and has not been measured.
 
 ### iLyrics
 
@@ -42,7 +44,7 @@ In the [historical evaluation](https://github.com/x96x64/ilyrics/blob/main/docs/
 
 #### Installing iLyrics
 
-iLyrics requires macOS 14 or later on Apple silicon. It is distributed through Homebrew, npm, and PyPI; install it through one channel only.
+iLyrics requires macOS 14 or later on Apple silicon. It is distributed through Homebrew, npm, and PyPI; install it through one channel only, so that updating that channel updates the `ilyrics` you run. The first alignment of plain English lyrics downloads about 460 MB of model weights from their publishers, which iLyrics rebuilds as Core ML models on your Mac. You can install them in advance with `ilyrics models install`, and `ilyrics doctor` shows the installed version and the command that updates it.
 
 ```bash
 brew install x96x64/tap/ilyrics
@@ -52,15 +54,19 @@ pipx install ilyrics    # or: pip install ilyrics
 
 ### iLibrary
 
-[iLibrary](https://github.com/x96x64/ilibrary) is a macOS command-line tool that prepares music files and adds albums to a local Music library in a controlled order. It converts lossless downloads to Apple Lossless, copies iTunes Store purchases without their purchase metadata, applies metadata from a catalog file without re-encoding the audio, names files as the Music app does, and sets file dates to release dates. It then adds albums to Music one at a time and diagnoses differences between the files and the library's records. Every command that changes files or the library offers a dry run, states what it will change before changing it, and verifies its result afterwards.
+[iLibrary](https://github.com/x96x64/ilibrary) is a macOS command-line tool that prepares downloaded and purchased music for a local Apple Music library and adds it in a controlled order. On import, it converts FLAC, WAV, and AIFF downloads to Apple Lossless and verifies each result by comparing the decoded audio with the source, and it copies iTunes Store purchases without re-encoding while removing the purchaser's account, name, purchase date, and store identifiers. Every command that changes files or the library offers a dry run, states what it will change before changing it, and verifies its result afterwards.
 
-The work is organized around a catalog: a JSON document that describes albums, tracks, release dates, and title rules, which can be drafted from existing tags, completed by hand or with an AI agent, validated against the files, and applied. The Swift package separates portable processing from macOS integration. `MP4Core` parses and rewrites MP4 boxes and relocates chunk offsets, so that metadata changes leave the audio data unchanged; `FLACCore` reads FLAC metadata without decoding audio; and `CatalogCore` implements the catalog format, matching, naming, ordering, title rules, and date handling. These three targets depend only on Foundation and are built and tested on Linux. Conversion through AudioToolbox, file dates, and Music automation are confined to macOS-specific targets, and no external tool is required at run time.
+The work is organized around a catalog: a JSON document that describes albums, tracks, release dates, and title rules. A catalog is drafted from the tags of existing files, completed by hand or with an AI agent, validated against the files, and applied. Applying it writes the metadata without re-encoding the audio, can remove qualifiers such as "(2012 Remaster)" and apply MLA, APA, or start-case capitalization to titles, names files and folders as the Music app does, and sets file dates to release dates. The [catalog documentation](https://github.com/x96x64/ilibrary/blob/main/docs/catalogs.md) describes the format and the matching rules.
 
-Version 0.1.0 is experimental. File processing is verified with synthetic inputs, and the Music operations are tested against a substitute library in the public suite. The implemented Music commands passed [validation in a separate macOS user](https://github.com/x96x64/ilibrary/blob/main/docs/reports/library-command-validation.md) on one macOS version, and 301 real-file copies passed [copy qualification](https://github.com/x96x64/ilibrary/blob/main/docs/reports/library-qualification.md). These results do not establish complete safety, compatibility with every supported macOS release, or correct behavior for every Apple Music library. The effect of iCloud Music Library matching has not been measured, and iLibrary does not claim to prevent it. Protected audio is out of scope, and iLibrary does not download audio. Following the project's own guidance, I recommend working on copies and trying the Music commands in a separate macOS user before using a personal library.
+Albums are then added to Music one at a time, in one of four orders: by release date, by artist, by artist in descending order, or by artist and then release date. iLibrary waits until the clock has passed the addition second of the previous album, so that the Recently Added view shows the albums in the intended order. Two diagnostic commands support the workflow: `check` reports missing tags, duplicate tracks, and incorrect dates, and compares the files with the library's records, while `doctor` reports problems with the environment and the steps to recover from them. An existing library can also be rebuilt in stages. The rebuild begins with a backup on separate storage that iLibrary verifies and test-restores, then moves the files out of the media folder, removes exactly the registrations it recorded, writes the catalog to the files, and adds the albums again. Each stage records its progress and refuses to run out of order. The [library operations guide](https://github.com/x96x64/ilibrary/blob/main/docs/library-operations.md#rebuilding-a-library) describes the procedure.
+
+The Swift package separates portable processing from macOS integration. `MP4Core` parses and rewrites MP4 boxes and relocates chunk offsets, `FLACCore` reads FLAC metadata without decoding audio, `CatalogCore` implements the catalog format, and `RebuildCore` holds the backup verification, recovery record, and progress journal. These four targets depend only on Foundation and are built and tested on Linux. `ConversionMac` and `LibraryMac` are the macOS integrations, which handle conversion through AudioToolbox, file dates, and Music automation. The command logic reaches Music only through a protocol, so it is tested with substitute libraries, and no external tool is required at run time.
+
+The limits are stated plainly in the project. File processing is verified with synthetic inputs, and Music operations are tested with a substitute library. The forms of the requests that iLibrary sends to Music were measured on macOS 27.0.1 with Music 1.7, but the rebuilding stages have not been run against the Music application, and behavior on other versions is unknown. iLibrary removes store identifiers and reports the cloud statuses that Music exposes, but it does not prevent Apple Music cloud matching. Protected audio is out of scope, and iLibrary does not download audio. It moves and rewrites music files and changes a Music library, so begin with copies, keep independent backups of your library, and review every dry run. The [README](https://github.com/x96x64/ilibrary#limitations) lists the remaining limitations.
 
 #### Installing iLibrary
 
-iLibrary requires macOS 14 or later on Apple silicon. It is distributed through Homebrew, npm, and PyPI; install it through one channel only. The npm and PyPI names include my identifier because the plain name `ilibrary` belongs to other projects on those registries.
+iLibrary requires macOS 14 or later on Apple silicon. It is distributed through Homebrew, npm, and PyPI; install it through one channel only. The npm and PyPI names include my identifier because the plain name `ilibrary` belongs to other projects on those registries. After installation, `ilibrary --version` confirms the executable, and `ilibrary doctor` checks the environment and the Automation permission that Music commands need.
 
 ```bash
 brew install x96x64/tap/ilibrary
@@ -70,17 +76,19 @@ pipx install x96_64-ilibrary    # or: pip install x96_64-ilibrary
 
 ## Interests
 
-My interests are AI agents and bots, command-line tools, free and open-source software, and audio and music files. Away from the keyboard, I listen to a lot of music from the 1960s through the 1990s, above all Michael Jackson and The Beatles. My favorite album by Michael Jackson is *HIStory: Past, Present and Future, Book I*, and my favorite of his songs is its title track, "HIStory." Every time I listen to his performance of "Dangerous" from the *HIStory World Tour*, I feel something like a powerful shock, no matter how many times I have heard it before.
+My interests are AI agents and bots, command-line tools, free and open-source software, and audio and music files. They meet in the tools I build, since both iLyrics and iLibrary work with audio files and music libraries from the command line.
+
+Away from the keyboard, I listen to a great deal of music, particularly recordings from the 1960s through the 1990s. One live recording in particular still lands like a powerful shock, however many times I have heard it before.
 
 ## Get in Touch
 
-You can find my work here on GitHub and my background on [LinkedIn](https://www.linkedin.com/in/x96x64). For questions or problems with a project, please open an issue in the matching repository, where everyone can benefit from the answer: the [iLyrics issue tracker](https://github.com/x96x64/ilyrics/issues) for iLyrics, and the [iLibrary issue tracker](https://github.com/x96x64/ilibrary/issues) for iLibrary.
+You can find my work here on GitHub and my background on [LinkedIn](https://www.linkedin.com/in/x96x64). For questions or problems with a project, please open an issue in the matching repository, where everyone can benefit from the answer: the [iLyrics issue tracker](https://github.com/x96x64/ilyrics/issues) for iLyrics, and the [iLibrary issue tracker](https://github.com/x96x64/ilibrary/issues) for iLibrary. A useful report names the version, the macOS version, and the exact command, and for iLibrary describes a synthetic reproduction rather than private files, as the [contribution guide](https://github.com/x96x64/ilibrary/blob/main/CONTRIBUTING.md) explains. Security problems with iLibrary are reported privately as its [security policy](https://github.com/x96x64/ilibrary/blob/main/SECURITY.md) describes.
 
 ## GitHub Activity
 
 ### Recent Activity
 
-My latest public activity on GitHub, updated automatically every six hours:
+The list below shows my latest public activity on GitHub. A scheduled workflow rewrites it automatically every six hours, so it reflects my recent public events, most recent first, and it may lag behind what GitHub itself shows:
 
 <!--START_SECTION:activity-->
 1. 🎉 Merged PR [#39](https://github.com/x96x64/ilibrary/pull/39) in [x96x64/ilibrary](https://github.com/x96x64/ilibrary)
@@ -92,40 +100,40 @@ My latest public activity on GitHub, updated automatically every six hours:
 
 ### GitHub Stats
 
-These cards are generated from my public GitHub activity and refreshed automatically every six hours. The displayed figures may lag behind recent activity because the source services cache their results; if a refresh fails, the last successful cards remain available.
+These cards are generated from my public GitHub activity and refreshed automatically every six hours. The displayed figures may lag behind recent activity because the source services cache their results; if a refresh fails, the last successful cards remain available. The four cards show statistics, the languages most used in my public repositories, contribution streaks, and achievement trophies; each links to my profile.
 
 <a href="https://github.com/x96x64">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/github/stats-dark.svg">
-    <img alt="Re:COO's GitHub stats" src="assets/github/stats-light.svg">
+    <img alt="GitHub statistics card for x96x64: commits, pull requests, issues, and stars" src="assets/github/stats-light.svg">
   </picture>
 </a>
 <a href="https://github.com/x96x64">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/github/languages-dark.svg">
-    <img alt="Top languages" src="assets/github/languages-light.svg">
+    <img alt="Card of the languages most used in the public repositories of x96x64" src="assets/github/languages-light.svg">
   </picture>
 </a>
 
 <a href="https://github.com/x96x64">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/github/streak-dark.svg">
-    <img alt="GitHub streak" src="assets/github/streak-light.svg">
+    <img alt="Card of the current and longest GitHub contribution streaks of x96x64" src="assets/github/streak-light.svg">
   </picture>
 </a>
 
 <a href="https://github.com/x96x64">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/github/trophies-dark.svg">
-    <img alt="Trophies" src="assets/github/trophies-light.svg">
+    <img alt="Card of GitHub achievement trophies earned by x96x64" src="assets/github/trophies-light.svg">
   </picture>
 </a>
 
 ### Contributions
 
-Every day, a snake makes its way through my contribution graph and eats the squares in the order they were earned.
+Every day, a snake makes its way through my contribution graph and eats the squares in the order they were earned. The animation is generated from the public contribution calendar by a scheduled workflow and published to a separate branch. It is decorative; the graph on my GitHub profile page is the authoritative record of contributions.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/x96x64/x96x64/output/github-snake-dark.svg">
-  <img alt="A snake eating the squares of Re:COO's contribution graph" src="https://raw.githubusercontent.com/x96x64/x96x64/output/github-snake.svg">
+  <img alt="An animated snake eating the squares of the GitHub contribution graph of x96x64 in the order they were earned" src="https://raw.githubusercontent.com/x96x64/x96x64/output/github-snake.svg">
 </picture>
