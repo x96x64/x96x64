@@ -92,11 +92,11 @@ The activity list, the statistics cards, and the contribution snake below are ge
 The list below shows my latest public activity on GitHub. A scheduled workflow rewrites it automatically every six hours, so it reflects my recent public events, most recent first, and it may lag behind what GitHub itself shows:
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#3](https://github.com/x96x64/x96x64/pull/3) in [x96x64/x96x64](https://github.com/x96x64/x96x64)
-2. 🎉 Merged PR [#49](https://github.com/x96x64/ilibrary/pull/49) in [x96x64/ilibrary](https://github.com/x96x64/ilibrary)
-3. 🎉 Merged PR [#12](https://github.com/x96x64/homebrew-tap/pull/12) in [x96x64/homebrew-tap](https://github.com/x96x64/homebrew-tap)
-4. 💪 Opened PR [#4](https://github.com/x96x64/x96x64/pull/4) in [x96x64/x96x64](https://github.com/x96x64/x96x64)
-5. 🎉 Merged PR [#11](https://github.com/x96x64/homebrew-tap/pull/11) in [x96x64/homebrew-tap](https://github.com/x96x64/homebrew-tap)
+1. 🗣 Commented on [#10](https://github.com/x96x64/homebrew-tap/pull/10#issuecomment-6360540078) in [x96x64/homebrew-tap](https://github.com/x96x64/homebrew-tap)
+2. 🎉 Merged PR [#3](https://github.com/x96x64/x96x64/pull/3) in [x96x64/x96x64](https://github.com/x96x64/x96x64)
+3. 🎉 Merged PR [#49](https://github.com/x96x64/ilibrary/pull/49) in [x96x64/ilibrary](https://github.com/x96x64/ilibrary)
+4. 🎉 Merged PR [#12](https://github.com/x96x64/homebrew-tap/pull/12) in [x96x64/homebrew-tap](https://github.com/x96x64/homebrew-tap)
+5. 💪 Opened PR [#4](https://github.com/x96x64/x96x64/pull/4) in [x96x64/x96x64](https://github.com/x96x64/x96x64)
 <!--END_SECTION:activity-->
 
 ### GitHub Stats
